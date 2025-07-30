@@ -1,11 +1,11 @@
 import Footer from "./components/Footer";
-import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import LuxurySection from "./components/LuxurySection";
 import OurMenuSection from "./components/OurMenuSection";
 import OurServicesSection from "./components/OurServicesSection";
 import ProudMomentsSection from "./components/ProudMomentSection";
 import TestimonialsSection from "./components/TestimonialSection";
+import VisionMissionExperience from "./components/VisionMision";
 
 function page() {
   return (
@@ -13,7 +13,7 @@ function page() {
       <HeroSection />
       <LuxurySection />
       <OurServicesSection />
-      <GallerySection />
+      <VisionMissionExperience />
       <OurMenuSection/>
       <TestimonialsSection />
       <ProudMomentsSection />

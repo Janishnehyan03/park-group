@@ -58,6 +58,9 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
 };
 
+// Add a background color for the card and overlay for hover reveal
+// Add transition for smooth hover effect
+
 export default function OurMenuSection() {
   return (
     <section className="bg-white text-gray-800 py-16 lg:py-24 px-4 font-body">
@@ -88,7 +91,7 @@ export default function OurMenuSection() {
         </motion.div>
         {/* Menu Items Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -102,30 +105,43 @@ export default function OurMenuSection() {
           {foodMenu.map((item, i) => (
             <motion.div
               key={item.name}
-              className={`relative bg-gray-50 rounded shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300 flex flex-col group overflow-hidden ${
-                item.featured ? "" : ""
-              }`}
+              className={`group relative rounded-xl border border-gray-100 overflow-hidden min-h-[340px] flex flex-col justify-end
+      ${item.featured ? "ring-2 ring-yellow-300" : ""}
+    `}
               variants={fadeUp}
             >
-              <div className="relative h-48 w-full">
+              {/* IMAGE */}
+              <div className="absolute inset-0">
                 <Image
                   src={item.img}
                   alt={item.name}
                   fill
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-center w-full h-full transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 33vw"
                   priority={i < 2}
                 />
+                {/* Overlay: transparent by default, shows on hover */}
+                <div className="absolute inset-0 bg-yellow-900/80 opacity-0 group-hover:opacity-95 transition-opacity duration-500" />
               </div>
-              <div className="flex-1 flex flex-col px-5 py-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-xl font-semibold text-gray-900">
+              {/* Reveal content on hover */}
+              <div className="relative z-10 px-6 py-7 flex flex-col h-full justify-end">
+                {/* Visible on hover */}
+                <div className="transition-opacity duration-400 opacity-0 group-hover:opacity-100">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-display text-2xl font-bold text-yellow-50 drop-shadow-lg">
+                      {item.name}
+                    </h3>
+                  </div>
+                  <p className="text-yellow-100 text-base mb-5">
+                    {item.description}
+                  </p>
+                </div>
+                {/* Visible before hover */}
+                <div className="transition-opacity duration-400 opacity-100 group-hover:opacity-0">
+                  <h3 className="font-display text-xl font-semibold text-white mb-1 drop-shadow-lg">
                     {item.name}
                   </h3>
                 </div>
-                <p className="text-gray-600 text-sm mb-4 flex-1">
-                  {item.description}
-                </p>
               </div>
             </motion.div>
           ))}
