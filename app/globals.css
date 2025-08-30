@@ -9,3 +9,16 @@
 .btn-secondary {
   @apply bg-transparent border border-white text-white py-3 px-10 shadow-md transition-transform duration-300 hover:scale-105;
 }
+/* Extra styles needed in globals.css */
+.perspective {
+  perspective: 1200px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
