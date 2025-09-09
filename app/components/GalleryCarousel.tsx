@@ -4,12 +4,12 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-  { src: "/images/item1.jpg", alt: "Dish 1" },
-  { src: "/images/item2.jpg", alt: "Dish 2" },
-  { src: "/images/item3.jpg", alt: "Dish 3" },
-  { src: "/images/item4.jpg", alt: "Dish 4" },
-  { src: "/images/item5.jpg", alt: "Dish 5" },
-  { src: "/images/item6.jpg", alt: "Dish 6" },
+  { src: "/images/1.jpg", alt: "Dish 1" },
+  { src: "/images/2.jpg", alt: "Dish 2" },
+  { src: "/images/3.jpg", alt: "Dish 3" },
+  { src: "/images/4.jpg", alt: "Dish 4" },
+  { src: "/images/5.jpg", alt: "Dish 5" },
+  { src: "/images/6.jpg", alt: "Dish 6" },
 ];
 
 export default function GalleryCarousel() {

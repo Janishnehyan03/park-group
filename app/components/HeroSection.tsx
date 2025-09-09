@@ -2,9 +2,12 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -12,8 +15,7 @@ export default function HeroSection() {
   return (
     <main
       id="home"
-      className="relative min-h-screen bg-black overflow-hidden pt-16" 
-      // 👆 pt-16 = push content down equal to navbar height (h-16 = 64px)
+      className="relative min-h-screen bg-black overflow-hidden pt-16"
     >
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
@@ -67,6 +69,17 @@ export default function HeroSection() {
         >
           With a touch of elegance and a dash of flavor, we create unforgettable experiences.
         </motion.p>
+
+        {/* Book Now Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.7 }}
+          onClick={() => router.push("/booking")}
+          className="mt-10 px-8 py-4 rounded-full font-bold text-lg bg-[#133427] text-[#fffacd] shadow-lg hover:bg-[#19523d] transition-all duration-200"
+        >
+          Book Now
+        </motion.button>
       </section>
     </main>
   );

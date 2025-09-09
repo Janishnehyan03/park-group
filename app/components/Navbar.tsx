@@ -35,6 +35,7 @@ export default function Navbar() {
     { name: "Vision", href: "#vision" },
     { name: "Gallery", href: "#gallery" },
     { name: "Testimonials", href: "#testimonials" },
+    { name: "Booking", href: "/booking" },
   ];
 
   // Close on ESC
