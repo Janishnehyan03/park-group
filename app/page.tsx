@@ -15,10 +15,10 @@ function page() {
       <Navbar />
       <HeroSection />
       <LuxurySection />
+      <GalleryCarousel />
       <OurServicesSection />
       <VisionMissionExperience />
       <VisionSection />
-      <GalleryCarousel />
       <TestimonialsSection />
       <TheManBehindSection />
       <Footer />

@@ -1,91 +1,83 @@
 "use client";
-import Image from "next/image";
 import {
-  UtensilsCrossed,
+  Utensils,
   Sparkles,
   Camera,
+  Video,
   Music,
-  Mail,
+  Users,
+  Gift,
+  CalendarCheck,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const stats = [
-  { icon: UtensilsCrossed, label: "Food Catering" },
-  { icon: Sparkles, label: "Stage Decoration" },
-  { icon: Camera, label: "Media" },
+const services = [
+  { icon: Utensils, label: "Catering Services" },
+  { icon: Sparkles, label: "Wedding Events" },
+  { icon: Gift, label: "Birthday Parties" },
+  { icon: CalendarCheck, label: "Inaugural Functions" },
+  { icon: Users, label: "Event Execution" },
+  { icon: Camera, label: "Photography" },
+  { icon: Video, label: "Videography" },
   { icon: Music, label: "Entertainment" },
-  { icon: Mail, label: "Invitation Card" },
 ];
 
-export default function LuxurySection() {
+export default function ServicesSection() {
   return (
-    <section id="services" className="w-full flex flex-col md:flex-row my-12 md:my-16 overflow-hidden">
-      {/* Left: Food Image */}
-      <div className="relative w-full md:w-1/2 h-[260px] sm:h-[400px] md:h-auto min-h-[320px] md:min-h-[620px]">
-        <Image
-          src="/images/luxury.jpg"
-          alt="Catering Food Platter"
-          fill
-          className="object-cover brightness-90"
-          priority
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-      </div>
-
-      {/* Right: Content */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-10 md:px-14 py-12 lg:py-16">
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#133427] mb-8 leading-snug sm:leading-tight"
-        >
-          Premium Event & Catering Services
-        </motion.h2>
-
-        {/* Paragraphs */}
+    <section
+      id="services"
+      className="w-full py-16 md:py-20 lg:py-24 px-4 bg-gradient-to-br from-[#133427] via-[#19523d] to-[#133427]"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section Title */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
+          className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-5 text-[#1e3624] text-base sm:text-lg leading-relaxed mb-12"
         >
-          <p>
-            We provide end-to-end event solutions, ensuring every detail is
-            handled with excellence and creativity.
-          </p>
-          <p>
-            From exquisite catering to elegant stage decorations, engaging
-            entertainment, media coverage, and personalized invitation cards,
-            our team is dedicated to making your event unforgettable.
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Our <span className="text-[#ffe869]">Services</span>
+          </h2>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            Complete event solutions tailored to make your special moments
+            unforgettable
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 lg:gap-6">
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
+        {/* Services Grid - exactly 8 items, clean alignment */}
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.05 }}
+          viewport={{ once: true }}
+        >
+          {services.map((service, i) => {
+            const Icon = service.icon;
             return (
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 50 }}
+                key={service.label}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
+                transition={{ delay: i * 0.05, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gradient-to-br from-[#19523d] to-[#133427] text-[#fffacd] shadow-md hover:shadow-xl hover:scale-[1.07] transition-transform duration-300 ease-out text-center"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-[#ffe869] 
+                  rounded-2xl p-6 text-center hover:scale-105 hover:-translate-y-1 
+                  transition-all duration-300 group w-full  min-h-[170px] 
+                  flex flex-col justify-center"
               >
-                <Icon className="w-9 h-9 mb-3 sm:w-10 sm:h-10" />
-                <span className="text-sm sm:text-base font-semibold leading-snug">
-                  {stat.label}
-                </span>
+                <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-[#ffe869]/90 group-hover:bg-[#ffe869] group-hover:scale-110 transition-all duration-300">
+                  <Icon className="w-8 h-8 text-[#133427]" />
+                </div>
+                <h3 className="text-lg font-semibold text-white leading-tight">
+                  {service.label}
+                </h3>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
