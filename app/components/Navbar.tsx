@@ -52,6 +52,19 @@ export default function Navbar() {
     if (open && panelRef.current) panelRef.current.focus();
   }, [open]);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 font-sans">
       <motion.div
@@ -105,7 +118,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               {/* Desktop call button */}
               <a
-                href="tel:+971563631487"
+                href="tel:+919048012292"
                 className="hidden sm:inline-flex items-center gap-2 border rounded-full px-4 py-2 text-[#fffacd] border-[#fffacd] text-[13px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
               >
                 <Phone className="w-4 h-4" />
@@ -114,8 +127,8 @@ export default function Navbar() {
 
               {/* Mobile call button */}
               <a
-                href="tel:+971563631487"
-                className="md:hidden inline-flex p-2 items-center justify-center rounded-full border border-[#fffacd] text-[#fffacd] hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200 h-9 w-9"
+                href="tel:+919048012292"
+                className="sm:hidden inline-flex p-2 items-center justify-center rounded-full border border-[#fffacd] text-[#fffacd] hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200 h-9 w-9 flex-shrink-0"
               >
                 <Phone className="w-5 h-5" />
               </a>
@@ -127,7 +140,7 @@ export default function Navbar() {
                 aria-expanded={open}
                 aria-controls="mobile-menu"
                 aria-label={open ? "Close menu" : "Open menu"}
-                className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[#fffacd] hover:bg-[#fffacd]/10 h-9 w-9"
+                className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[#fffacd] hover:bg-[#fffacd]/10 h-9 w-9 flex-shrink-0"
               >
                 {open ? (
                   <X className="h-6 w-6" />
@@ -139,23 +152,33 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile full-screen menu */}
+        {/* Mobile menu overlay */}
+        {open && (
+          <div 
+            className="md:hidden fixed inset-0 top-[88px] bg-black/50 z-40"
+            onClick={() => setOpen(false)}
+          />
+        )}
+
+        {/* Mobile menu */}
         <motion.div
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
           ref={panelRef}
           tabIndex={-1}
-          className="md:hidden fixed inset-0 z-50 bg-[#0f3026] flex flex-col px-6 py-6"
-          initial={shouldReduceMotion ? { opacity: 0 } : { x: "100%" }}
+          className={`md:hidden fixed top-[88px] left-0 right-0 z-50 bg-[#0f3026] border-t border-[#fffacd]/20 ${
+            open ? 'block' : 'hidden'
+          }`}
+          initial={shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }}
           animate={
             open
               ? shouldReduceMotion
                 ? { opacity: 1 }
-                : { x: 0 }
+                : { y: 0, opacity: 1 }
               : shouldReduceMotion
               ? { opacity: 0 }
-              : { x: "100%" }
+              : { y: -20, opacity: 0 }
           }
           transition={{
             type: shouldReduceMotion ? "tween" : "spring",
@@ -164,47 +187,32 @@ export default function Navbar() {
             duration: shouldReduceMotion ? 0.15 : undefined,
           }}
         >
-          {/* Header inside menu */}
-          <div className="flex items-center justify-between mb-6">
-            <Image
-              src="/images/logo.png"
-              alt="Royal Key Logo"
-              width={60}
-              height={36}
-              className="object-contain"
-            />
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close menu"
-              className="rounded-md p-2 text-[#fffacd] hover:bg-[#fffacd]/10"
-            >
-              <X className="h-6 w-6" />
-            </button>
+          <div className="max-h-[calc(100vh-120px)] overflow-y-auto">
+            <div className="px-4 py-4 space-y-1">
+              {/* Nav links */}
+              {navLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 text-[16px] font-medium text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+              ))}
+
+              {/* Call button */}
+              <div className="pt-4 border-t border-[#fffacd]/20 mt-4">
+                <a
+                  href="tel:+919048012292"
+                  className="flex items-center justify-center gap-2 w-full border rounded-full px-4 py-3 text-[#fffacd] border-[#fffacd] text-[16px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call: 9048 012 292
+                </a>
+              </div>
+            </div>
           </div>
-
-          {/* Nav links */}
-          <nav className="flex-1 flex flex-col gap-2">
-            {navLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="px-3 py-3 text-[15px] font-medium tracking-tight text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Call button at bottom */}
-          <a
-            href="tel:+971563631487"
-            className="mt-auto inline-flex items-center gap-2 border rounded-full px-4 py-2 text-[#fffacd] border-[#fffacd] text-[15px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
-          >
-            <Phone className="w-4 h-4" />
-            9048 012 292
-          </a>
         </motion.div>
       </motion.div>
     </nav>
