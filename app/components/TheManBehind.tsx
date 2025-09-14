@@ -7,7 +7,7 @@ export default function TheManBehindSection() {
         {/* Image */}
         <div className="relative w-[320px] h-[420px] overflow-hidden flex-shrink-0">
           <Image
-            src="/images/man.jpg" // Replace with your actual image path
+            src="/images/man.png" // Replace with your actual image path
             alt="Lateef Park, Founder of Park Group"
             fill
             className="object-cover object-top"

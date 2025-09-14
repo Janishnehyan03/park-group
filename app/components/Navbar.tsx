@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, Instagram } from "lucide-react";
 import {
   motion,
   useScroll,
@@ -55,13 +55,13 @@ export default function Navbar() {
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
-    
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [open]);
 
@@ -118,6 +118,13 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               {/* Desktop call button */}
               <a
+                href="https://www.instagram.com/park_catering_events?igsh=MXgxcWU0dmY2N255Mw=="
+                className="hidden sm:inline-flex items-center gap-2 border rounded-full px-4 py-2 text-[#fffacd] border-[#fffacd] text-[13px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
+              >
+                <Instagram className="w-4 h-4" />
+                Instagram
+              </a>
+              <a
                 href="tel:+919048012292"
                 className="hidden sm:inline-flex items-center gap-2 border rounded-full px-4 py-2 text-[#fffacd] border-[#fffacd] text-[13px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
               >
@@ -126,6 +133,12 @@ export default function Navbar() {
               </a>
 
               {/* Mobile call button */}
+              <a
+                href="https://www.instagram.com/park_catering_events?igsh=MXgxcWU0dmY2N255Mw=="
+                className="sm:hidden inline-flex p-2 items-center justify-center rounded-full border border-[#fffacd] text-[#fffacd] hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200 h-9 w-9 flex-shrink-0"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
               <a
                 href="tel:+919048012292"
                 className="sm:hidden inline-flex p-2 items-center justify-center rounded-full border border-[#fffacd] text-[#fffacd] hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200 h-9 w-9 flex-shrink-0"
@@ -154,7 +167,7 @@ export default function Navbar() {
 
         {/* Mobile menu overlay */}
         {open && (
-          <div 
+          <div
             className="md:hidden fixed inset-0 top-[88px] bg-black/50 z-40"
             onClick={() => setOpen(false)}
           />
@@ -167,9 +180,7 @@ export default function Navbar() {
           aria-modal="true"
           ref={panelRef}
           tabIndex={-1}
-          className={`md:hidden fixed top-[88px] left-0 right-0 z-50 bg-[#0f3026] border-t border-[#fffacd]/20 ${
-            open ? 'block' : 'hidden'
-          }`}
+          className={`md:hidden fixed top-[98px] left-0 right-0 z-50 flex justify-center pointer-events-none`}
           initial={shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }}
           animate={
             open
@@ -187,7 +198,7 @@ export default function Navbar() {
             duration: shouldReduceMotion ? 0.15 : undefined,
           }}
         >
-          <div className="max-h-[calc(100vh-120px)] overflow-y-auto">
+          <div className="pointer-events-auto w-[90vw] max-w-[400px] rounded-xl bg-[#0f3026] border-t border-[#fffacd]/20 shadow-lg max-h-[calc(100vh-120px)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               {/* Nav links */}
               {navLinks.map((item) => (
@@ -195,7 +206,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 text-[16px] font-medium text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md transition-colors duration-200"
+                  className="block px-4 py-3 text-[13px] font-medium text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md transition-colors duration-200"
                 >
                   {item.name}
                 </a>
