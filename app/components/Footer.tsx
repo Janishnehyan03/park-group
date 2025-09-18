@@ -117,7 +117,7 @@ export default function Footer() {
             />
           </a>
           <a
-            href="https://instagram.com/parkeventscatering"
+            href="https://www.instagram.com/park_catering_events?igsh=MXgxcWU0dmY2N255Mw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"

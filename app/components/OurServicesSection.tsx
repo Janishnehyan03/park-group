@@ -8,7 +8,7 @@ const highlights = [
   { text: "20+", label: "Years of Excellence", icon: Award },
   { text: "1000+", label: "Variety Dishes", icon: Utensils },
   { text: "24/7", label: "Customer Support", icon: Clock },
-  { text: "10", label: "Restaurants in Kerala", icon: Building },
+  { text: "10+", label: "Restaurants cafe and bakes", icon: Building },
 ];
 
 export default function WhyUsSection() {
