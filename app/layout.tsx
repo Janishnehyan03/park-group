@@ -3,8 +3,8 @@ import "./globals.css";
 import { Manrope } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Park Group - Events & Catering",
-  description: "Your one-stop solution for events and catering services.",
+  title: "Park Group - Catering & Events",
+  description: "Your one-stop solution for catering and events services.",
 };
 
 const manrope = Manrope({
