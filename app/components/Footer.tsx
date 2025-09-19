@@ -63,8 +63,7 @@ export default function Footer() {
                 <span className="text-sm text-[#ffe687]/80 mt-1">
                   OTHER BRANCHES: <br />
                   <span className="text-[#ffffff]">
-                    KOLLAM • CHAMRAVATTAM • KADUNGATHUKUNDU • KASARAGOD •
-                    ANCHAL
+                    KOLLAM • CHAMRAVATTAM • KADUNGATHUKUNDU • KASARAGOD • ANCHAL
                   </span>
                 </span>
               </div>
@@ -108,24 +107,24 @@ export default function Footer() {
             href="https://wa.me/919048012292"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="relative z-10 inline-flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
           >
             <img
               src="/images/whatsapp.png"
               alt="WhatsApp"
-              className="w-7 h-7 flex-shrink-0"
+              className="w-7 h-7"
             />
           </a>
           <a
             href="https://www.instagram.com/park_catering_events?igsh=MXgxcWU0dmY2N255Mw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="relative z-10 inline-flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
           >
             <img
               src="/images/instagram.png"
               alt="Instagram"
-              className="w-7 h-7 flex-shrink-0"
+              className="w-7 h-7"
             />
           </a>
         </div>
@@ -135,7 +134,7 @@ export default function Footer() {
           <img
             src="/images/fssai.png"
             alt="FSSAI"
-            className="w-20 flex-shrink-0 invert brightness-0 saturate-0"
+            className="w-20 invert brightness-0 saturate-0"
           />
           <span className="font-bold text-lg">11323010001394</span>
         </div>
@@ -154,11 +153,7 @@ export default function Footer() {
         className="fixed bottom-8 right-8 w-14 h-14 rounded-full flex items-center justify-center bg-[#128c7e] shadow-xl transition hover:scale-110 z-40"
         aria-label="Chat on WhatsApp"
       >
-        <img
-          src="/images/whatsapp.png"
-          alt="WhatsApp"
-          className="w-8 h-8"
-        />
+        <img src="/images/whatsapp.png" alt="WhatsApp" className="w-8 h-8" />
       </a>
     </footer>
   );
