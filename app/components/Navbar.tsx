@@ -165,66 +165,69 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu overlay */}
+        {/* --- Mobile menu rendering conditionally based on 'open' state --- */}
         {open && (
-          <div
-            className="md:hidden fixed inset-0 top-[88px] bg-black/50 z-40"
-            onClick={() => setOpen(false)}
-          />
-        )}
+          <>
+            {/* Mobile menu overlay */}
+            <div
+              className="md:hidden fixed inset-0 top-[88px] bg-black/50 z-40"
+              onClick={() => setOpen(false)}
+            />
 
-        {/* Mobile menu */}
-        <motion.div
-          id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          ref={panelRef}
-          tabIndex={-1}
-          className={`md:hidden fixed top-[98px] left-0 right-0 z-50 flex justify-center pointer-events-none`}
-          initial={shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }}
-          animate={
-            open
-              ? shouldReduceMotion
-                ? { opacity: 1 }
-                : { y: 0, opacity: 1 }
-              : shouldReduceMotion
-              ? { opacity: 0 }
-              : { y: -20, opacity: 0 }
-          }
-          transition={{
-            type: shouldReduceMotion ? "tween" : "spring",
-            stiffness: 260,
-            damping: 28,
-            duration: shouldReduceMotion ? 0.15 : undefined,
-          }}
-        >
-          <div className="pointer-events-auto w-[90vw] max-w-[400px] rounded-xl bg-[#0f3026] border-t border-[#fffacd]/20 shadow-lg max-h-[calc(100vh-120px)] overflow-y-auto">
-            <div className="px-4 py-4 space-y-1">
-              {/* Nav links */}
-              {navLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-4 py-3 text-[13px] font-medium text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
-              ))}
+            {/* Mobile menu */}
+            <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              ref={panelRef}
+              tabIndex={-1}
+              className="md:hidden fixed top-[98px] left-0 right-0 z-50 flex justify-center"
+              initial={shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }}
+              animate={
+                open
+                  ? shouldReduceMotion
+                    ? { opacity: 1 }
+                    : { y: 0, opacity: 1 }
+                  : shouldReduceMotion
+                  ? { opacity: 0 }
+                  : { y: -20, opacity: 0 }
+              }
+              transition={{
+                type: shouldReduceMotion ? "tween" : "spring",
+                stiffness: 260,
+                damping: 28,
+                duration: shouldReduceMotion ? 0.15 : undefined,
+              }}
+            >
+              <div className="w-[90vw] max-w-[400px] rounded-xl bg-[#0f3026] border-t border-[#fffacd]/20 shadow-lg max-h-[calc(100vh-120px)] overflow-y-auto">
+                <div className="px-4 py-4 space-y-1">
+                  {/* Nav links */}
+                  {navLinks.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block px-4 py-3 text-[13px] font-medium text-[#fffacd] hover:bg-[#fffacd]/10 rounded-md transition-colors duration-200"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
 
-              {/* Call button */}
-              <div className="pt-4 border-t border-[#fffacd]/20 mt-4">
-                <a
-                  href="tel:+919048012292"
-                  className="flex items-center justify-center gap-2 w-full border rounded-full px-4 py-3 text-[#fffacd] border-[#fffacd] text-[16px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
-                >
-                  <Phone className="w-5 h-5" />
-                  Call: 9048 012 292
-                </a>
+                  {/* Call button */}
+                  <div className="pt-4 border-t border-[#fffacd]/20 mt-4">
+                    <a
+                      href="tel:+919048012292"
+                      className="flex items-center justify-center gap-2 w-full border rounded-full px-4 py-3 text-[#fffacd] border-[#fffacd] text-[16px] font-semibold hover:bg-[#fffacd] hover:text-[#0f3026] transition duration-200"
+                    >
+                      <Phone className="w-5 h-5" />
+                      Call: 9048 012 292
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </nav>
   );
