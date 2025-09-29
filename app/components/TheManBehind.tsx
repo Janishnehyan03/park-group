@@ -59,14 +59,15 @@ export default function TheManBehindSection() {
           </div>
         </div>
       </div>
-
+      <h1 className="text-3xl font-bold text-center text-[#133427] mt-20">
+        Partners in Malappuram
+      </h1>
       {/* Other Partners */}
       <div className="max-w-5xl mx-auto mt-20 px-6 grid gap-10 md:grid-cols-2">
-        <div className="">
+        <div>
           <h3 className="text-2xl font-bold text-[#133427] mb-2">
             Noushad Moopen
           </h3>
-          <p className="text-[#19523d] mb-3">Partner</p>
           <p className="text-[#1e3624] leading-relaxed text-base">
             With over 14 years in the kitchen & bakery industry and 10 years in
             catering and event management, Mr. Noushad brings unmatched
@@ -76,7 +77,6 @@ export default function TheManBehindSection() {
 
         <div>
           <h3 className="text-2xl font-bold text-[#133427] mb-2">Hussain</h3>
-          <p className="text-[#19523d] mb-3">Partner</p>
           <p className="text-[#1e3624] leading-relaxed text-base">
             Mr. Hussain, an experienced ex-chef in the GCC and bakery
             specialist, brings creativity and depth of knowledge that enriches
