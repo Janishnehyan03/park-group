@@ -10,7 +10,7 @@ export default function CustomReels() {
     <section className="bg-[#fef7d4] py-16">
       {/* Section Title */}
       <h2 className="text-3xl font-bold text-center text-[#0a3c32] mb-12">
-        Our Instagram Reels
+        Our Latest Moments 🎥✨
       </h2>
 
       {/* Reels Grid */}
