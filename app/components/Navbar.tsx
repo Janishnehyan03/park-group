@@ -182,7 +182,9 @@ export default function Navbar() {
               ref={panelRef}
               tabIndex={-1}
               className="md:hidden fixed top-[98px] left-0 right-0 z-50 flex justify-center"
-              initial={shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }}
+              initial={
+                shouldReduceMotion ? { opacity: 0 } : { y: -20, opacity: 0 }
+              }
               animate={
                 open
                   ? shouldReduceMotion
