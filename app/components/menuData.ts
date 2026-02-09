@@ -177,6 +177,24 @@ export const menuData: MenuCategory[] = [
     ],
   },
   {
+    title: "Gravy",
+    items: [
+      "Fish Curry",
+      "Kashmiri Rice Afghani Pulav",
+      "Chicken Kashmiri Pulav",
+      "Kerala & Meat Gravy Items",
+      "Beef Coconut Varattu",
+      "Chicken Coconut Varattu",
+      "Chatti Beef",
+      "Mutton Leg Rara",
+      "Sambar",
+      "Aviyal",
+      "Pulisseri",
+      "Payasam (Tender Payasam)",
+      "Tandhoori Tikka",
+    ],
+  },
+  {
     title: "Sittings Available Your Budget",
     items: [
       "Normal Table Service (1 Counter 8 People)",
